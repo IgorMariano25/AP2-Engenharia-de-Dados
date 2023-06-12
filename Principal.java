@@ -4,11 +4,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import modelo.Pessoa;
-import modelo.Telefone;
-import modelo.TipoTelefone;
 import dao.ConnectionFactory;
-import dao.PessoaDAO;
 
 public class Principal{
 

@@ -10,7 +10,7 @@ public class ConnectionFactory {
     try {
       String sgbd = "mysql";
       String endereco = "localhost";
-      String bd = "agenda";
+      String bd = "Spotify";
       String usuario = "root";
       String senha = "mysqlroot";
 
