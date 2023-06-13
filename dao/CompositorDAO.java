@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import modelo.Autor;
+import modelo.Compositor;
 import modelo.Compositor;
 import modelo.Compositor;
 
@@ -31,7 +31,7 @@ public class CompositorDAO {
     }
 
     // VERIFICAR COM A TALITA
-    
+
     // public Compositor lerCompositorSemId(Compositor compositor) {
     //     String sql = "SELECT * FROM compositor WHERE nome = ?";
 
@@ -58,6 +58,19 @@ public class CompositorDAO {
             try (PreparedStatement pstm = connection.prepareStatement(sql)) {
                 pstm.setString(1, compositor.getNovoNome());
                 pstm.setString(2, compositor.getNome());
+                pstm.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void deleteSemId(Compositor compositor) {
+        try {
+            String sql = "DELETE FROM compositor WHERE nome = ?";
+
+            try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+                pstm.setString(1, compositor.getNome());
                 pstm.executeUpdate();
             }
         } catch (SQLException e) {
