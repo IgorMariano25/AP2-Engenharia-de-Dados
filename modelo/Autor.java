@@ -8,6 +8,12 @@ public class Autor {
   private int id;
   private ArrayList<Musica> musicas;
   
+  public Autor(String nome, int id) {
+    this.nome = nome;
+    this.id = id;
+    this.musicas = new ArrayList<Musica>();
+  }
+
   public Autor(String nome) {
     this.nome = nome;
     this.musicas = new ArrayList<Musica>();
