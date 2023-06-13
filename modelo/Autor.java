@@ -29,4 +29,20 @@ public class Autor {
   public void setNome(String nome) {
     this.nome = nome;
   }
+
+  public String getNovoNome() {
+    return novoNome;
+  }
+
+  public void setNovoNome(String novoNome) {
+    this.novoNome = novoNome;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
 }
