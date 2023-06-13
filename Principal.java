@@ -1,196 +1,44 @@
 import java.security.KeyStore.PasswordProtection;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
 import dao.AutorDAO;
+import dao.CompositorDAO;
 import dao.ConnectionFactory;
 import modelo.Autor;
 import modelo.Musica;
+import modelo.Compositor;
 
 public class Principal{
 
-
     public static void main(String[] args) throws SQLException {
 
-        Autor a = new Autor("Mariza Montes");
+
+        // Autores
+        Autor a_1 = new Autor("Mariza Montes");
         Musica m_1 = new Musica("Vel infância", "qualquer coisa", new Date(2002, 7, 24), 50, 13);
 
-        a.addMusica(m_1);
-        m_1.addAutores(a);
+        a_1.addMusica(m_1);
+        m_1.addAutores(a_1);
 
         ConnectionFactory fabricaDeConexao = new ConnectionFactory();
         Connection connection = fabricaDeConexao.recuperaConexao();
         AutorDAO a_dao = new AutorDAO(connection);
-        a_dao.createSemMusica(a);
+        a_dao.createSemMusica(a_1);
+
+        // Compositores
+        Compositor a_2 = new Compositor("Igor Mariano");
+        Musica m_2 = new Musica("Exemplo", "Bora ver", new Date(2002, 7, 24), 50, 13);
+        a_2.addMusica(m_2);
+        m_2.addCompositor(a_2);
+
+        CompositorDAO a_dao_2 = new CompositorDAO(connection);
+        a_dao_2.createSemMusica(a_2);
+
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     //     Pessoa pessoa1 = new Pessoa("Amanda Senra", "00011122200", LocalDate.of(2000, 1, 01));
     //     Telefone telefone10 = new Telefone(TipoTelefone.Celular,55,21,982141939);
@@ -266,4 +114,4 @@ public class Principal{
     //         System.out.println(pessoa);
     //     }
     // }
-
+// }
