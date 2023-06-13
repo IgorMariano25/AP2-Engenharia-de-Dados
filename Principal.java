@@ -15,27 +15,46 @@ public class Principal{
 
     public static void main(String[] args) throws SQLException {
 
-
-        // Autores
-        Autor a_1 = new Autor("Mariza Montes");
-        Musica m_1 = new Musica("Vel infância", "qualquer coisa", new Date(2002, 7, 24), 50, 13);
-
-        a_1.addMusica(m_1);
-        m_1.addAutores(a_1);
-
         ConnectionFactory fabricaDeConexao = new ConnectionFactory();
         Connection connection = fabricaDeConexao.recuperaConexao();
-        AutorDAO a_dao = new AutorDAO(connection);
-        a_dao.createSemMusica(a_1);
+
+        // Autores
+        // Autor a_1 = new Autor("Mariza Montes");
+        Autor teste1 = new Autor("Igor Mariano");
+        Autor teste2 = new Autor("Guilherme Felix");
+        Autor teste3 = new Autor("Felipe Castelhano");
+        // Musica m_1 = new Musica("Vel infância", "qualquer coisa", new Date(2002, 7, 24), 50, 13);
+
+        // a_1.addMusica(m_1);
+        // m_1.addAutores(a_1);
+
+        // AutorDAO a_dao = new AutorDAO(connection);
+        // a_dao.createSemMusica(a_1);
+
+        AutorDAO teste1_dao = new AutorDAO(connection);
+        teste1_dao.createSemMusica(teste1);
+
+        AutorDAO teste2_dao = new AutorDAO(connection);
+        teste2_dao.createSemMusica(teste2);
+        // teste2_dao.updateAutorSemId(teste2);
+
+        AutorDAO teste3_dao = new AutorDAO(connection);
+        teste3_dao.createSemMusica(teste3);
+        // teste3_dao.deleteSemId(teste3);
+
+        teste1_dao.lerAutoresSemId(teste1);
+        teste2_dao.lerAutoresSemId(teste2);
+        teste2.setNovoNome("Valmir");
+        teste2_dao.updateAutorSemId(teste2);
 
         // Compositores
-        Compositor a_2 = new Compositor("Igor Mariano");
-        Musica m_2 = new Musica("Exemplo", "Bora ver", new Date(2002, 7, 24), 50, 13);
-        a_2.addMusica(m_2);
-        m_2.addCompositor(a_2);
+        // Compositor a_2 = new Compositor("Igor Mariano");
+        // Musica m_2 = new Musica("Exemplo", "Bora ver", new Date(2002, 7, 24), 50, 13);
+        // a_2.addMusica(m_2);
+        // m_2.addCompositor(a_2);
 
-        CompositorDAO a_dao_2 = new CompositorDAO(connection);
-        a_dao_2.createSemMusica(a_2);
+        // CompositorDAO a_dao_2 = new CompositorDAO(connection);
+        // a_dao_2.createSemMusica(a_2);
 
     }
 }
