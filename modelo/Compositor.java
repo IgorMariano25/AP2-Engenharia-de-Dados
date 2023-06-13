@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Compositor {
   private String nome;
-    private String novoNome;
+  private String novoNome;
   private int id;
   private ArrayList<Musica> musicas;
   
@@ -20,5 +20,17 @@ public class Compositor {
   }
   public void setNome(String nome) {
     this.nome = nome;
+  }
+  public String getNovoNome() {
+    return novoNome;
+  }
+  public void setNovoNome(String novoNome) {
+    this.novoNome = novoNome;
+  }
+  public int getId() {
+    return id;
+  }
+  public void setId(int id) {
+    this.id = id;
   }
 }
