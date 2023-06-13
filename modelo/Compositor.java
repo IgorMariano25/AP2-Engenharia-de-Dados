@@ -33,4 +33,10 @@ public class Compositor {
   public void setId(int id) {
     this.id = id;
   }
+
+  public String atualizarNome(){
+      this.novoNome = nome;
+      return novoNome;
+  }
 }
+

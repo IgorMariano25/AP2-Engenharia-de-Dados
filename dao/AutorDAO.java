@@ -18,7 +18,7 @@ public class AutorDAO {
         this.connection = connection;
     }
 
-    public void createSemMusica(Autor autor){
+    public void criarSemMusica(Autor autor){
         try {
             String sql = "INSERT INTO autor (nome) VALUES (?)";
  
@@ -85,7 +85,7 @@ public class AutorDAO {
         }
     }
 
-        public void updateAutorSemId(Autor autor) {
+    public void updateAutorSemId(Autor autor) {
         try {
             String sql = "UPDATE autor SET nome = ? WHERE nome = ?";
 
@@ -99,13 +99,13 @@ public class AutorDAO {
         }
     }
 
-    public void deleteComId(Autor autor, int id) {
+    public void deleteAutorComId(Autor autor, int id) {
         try {
             String sql = "DELETE FROM autor WHERE id = ? AND nome = ?";
 
             try (PreparedStatement pstm = connection.prepareStatement(sql)) {
-                pstm.setInt(1, id);
-                pstm.setString(1, autor.getNome());
+                pstm.setInt(1, autor.getId());
+                pstm.setString(2, autor.getNome());
                 pstm.executeUpdate();
             }
         } catch (SQLException e) {
@@ -113,7 +113,7 @@ public class AutorDAO {
         }
     }
 
-        public void deleteSemId(Autor autor) {
+        public void deleteAutorSemId(Autor autor) {
         try {
             String sql = "DELETE FROM autor WHERE nome = ?";
 

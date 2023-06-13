@@ -9,6 +9,7 @@ import java.sql.Statement;
 import modelo.Compositor;
 import modelo.Compositor;
 import modelo.Compositor;
+import modelo.Compositor;
 
 public class CompositorDAO {
 
@@ -65,7 +66,21 @@ public class CompositorDAO {
         }
     }
 
-    public void deleteSemId(Compositor compositor) {
+    public void updateCompositorComId(Compositor compositor, int id) {
+        try {
+            String sql = "UPDATE compositor SET nome = ? WHERE id = ?";
+
+            try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+                pstm.setString(1, compositor.getNovoNome());
+                pstm.setInt(2, compositor.getId());
+                pstm.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void deleteCompositorSemId(Compositor compositor) {
         try {
             String sql = "DELETE FROM compositor WHERE nome = ?";
 
