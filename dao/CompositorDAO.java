@@ -84,7 +84,7 @@ public class CompositorDAO {
             String sql = "DELETE FROM compositor WHERE nome = ?";
 
             try (PreparedStatement pstm = connection.prepareStatement(sql)) {
-                pstm.setString(1, compositor.getNome());
+                pstm.setString(2, compositor.getNome());
                 pstm.executeUpdate();
             }
         } catch (SQLException e) {
