@@ -49,7 +49,7 @@ public class MusicaDAO {
     public void deletar(int id) {
         try {
             String sql = "DELETE FROM Musica WHERE id = ?";
-            PreparedStatement statement = connection.prepareStatement(query);
+            PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, id);
             statement.executeUpdate();
         } catch (SQLException e) {
