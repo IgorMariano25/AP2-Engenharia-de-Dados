@@ -15,10 +15,10 @@ public class CategoriaDAO {
         this.connection = connection;
     }
 
-        public void criarSemMusica(Categoria categoria){
+    public void criarSemMusica(Categoria categoria){
         try {
             String sql = "INSERT INTO categoria (nome) VALUES (?)";
- 
+
             try (PreparedStatement pstm = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 pstm.setString(1, categoria.getNome());
                 pstm.execute(); 
@@ -26,5 +26,26 @@ public class CategoriaDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public Categoria lerCategoriaSemId(Categoria categoria) {
+        try {
+            String sql = "SELECT * FROM categoria WHERE nome = ?";
+
+            try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+                pstm.setString(1, categoria.getNome());
+
+                try (ResultSet rs = pstm.executeQuery()) {
+                    if (rs.next()) {
+                        Categoria lerCategoriaComId = new Categoria(sql);
+                        lerCategoriaComId.setNome(rs.getString("nome"));
+                        return lerCategoriaComId;
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
     }
 }
