@@ -3,6 +3,7 @@ package modelo;
 import java.util.Date;
 
 public class Usuario {
+  private int id;
   private String nome;
   private Date dataNascimento;
   private String cpf;
