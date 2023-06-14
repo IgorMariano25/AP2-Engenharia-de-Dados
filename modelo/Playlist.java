@@ -6,10 +6,10 @@ public class Playlist {
     private int id;
     private Date dataCriacao;
     private String titulo;
-    private int visibilidade;
+    private boolean visibilidade;
     private Categoria categoria;
     private ArrayList<Musica> musicas;
-    public Playlist(int id, Date dataCriacao, String titulo, int visibilidade, Categoria categoria) {
+    public Playlist(int id, Date dataCriacao, String titulo, boolean visibilidade, Categoria categoria) {
       this.id = id;
       this.dataCriacao = dataCriacao;
       this.titulo = titulo;
@@ -18,7 +18,7 @@ public class Playlist {
       this.musicas = new ArrayList<Musica>();
     }
 
-    public Playlist(Date dataCriacao, String titulo, int visibilidade, Categoria categoria) {
+    public Playlist(Date dataCriacao, String titulo, boolean visibilidade, Categoria categoria) {
       this.dataCriacao = dataCriacao;
       this.titulo = titulo;
       this.visibilidade = visibilidade;
@@ -44,10 +44,10 @@ public class Playlist {
       this.titulo = titulo;
     }
 
-    public int getVisibilidade() {
+    public boolean getVisibilidade() {
       return visibilidade;
     }
-    public void setVisibilidade(int visibilidade) {
+    public void setVisibilidade(boolean visibilidade) {
       this.visibilidade = visibilidade;
     }
 
