@@ -48,4 +48,17 @@ public class CategoriaDAO {
         }
         return null;
     }
+
+    public void updateCategoriaSemId(Categoria categoria) {
+        try {
+            String sql = "UPDATE categoria SET nome = ?";
+
+            try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+                pstm.setString(1, categoria.getNome());
+                pstm.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
