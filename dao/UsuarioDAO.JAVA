@@ -68,4 +68,31 @@ public class UsuarioDAO {
         }
     }
 
+    public void deleteUsuarioSemCPF(Usuario usuario) {
+        try {
+            String sql = "DELETE FROM usuario WHERE nome = ?";
+
+            try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+                pstm.setString(1, usuario.getNome());
+                pstm.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void deleteUsuarioComCPF(Usuario usuario, int cpf) {
+        try {
+            String sql = "DELETE FROM usuario WHERE nome = ? WHERE cpf = ?";
+
+            try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+                pstm.setInt(3, usuario.getCpf())
+                pstm.setString(1, usuario.getNome());
+                pstm.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
