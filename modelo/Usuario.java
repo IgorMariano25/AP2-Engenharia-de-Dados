@@ -8,8 +8,16 @@ public class Usuario {
   private Date dataNascimento;
   private String cpf;
   private int numeroCartao;
-  private int fkPlaylist;
-  private String usuarioCol;
+  private ArrayList<Playlist> playlists;
+  
+  public Usuario(int id, String nome, Date dataNascimento, String cpf, int numeroCartao) {
+    this.id = id;
+    this.nome = nome;
+    this.dataNascimento = dataNascimento;
+    this.cpf = cpf;
+    this.numeroCartao = numeroCartao;
+    this.playlists = new ArrayList<Playlist>();
+  }
   
   public Usuario(String nome, Date dataNascimento, String cpf, int numeroCartao, int fkPlaylist, String usuarioCol) {
     this.nome = nome;
