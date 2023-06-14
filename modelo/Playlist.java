@@ -7,7 +7,7 @@ public class Playlist {
   private Date dataCriacao;
   private String titulo;
   private int visibilidade;
-  private String fkCategoria;
+  private Categoria categorias;
   
   public Playlist(int id, Date dataCriacao, String titulo, int visibilidade, String fkCategoria) {
     this.id = id;
