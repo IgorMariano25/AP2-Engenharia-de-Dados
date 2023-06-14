@@ -27,6 +27,14 @@ public class Usuario {
     this.playlists = new ArrayList<Playlist>();
   }
   
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
   public String getNome() {
     return nome;
   }
