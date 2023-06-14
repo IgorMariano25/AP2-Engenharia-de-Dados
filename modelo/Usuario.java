@@ -11,14 +11,6 @@ public class Usuario {
   private int numeroCartao;
   private ArrayList<Playlist> playlists;
   
-  public Usuario(int id, String nome, Date dataNascimento, String cpf, int numeroCartao) {
-    this.id = id;
-    this.nome = nome;
-    this.dataNascimento = dataNascimento;
-    this.cpf = cpf;
-    this.numeroCartao = numeroCartao;
-    this.playlists = new ArrayList<Playlist>();
-  }
   
   public Usuario(String nome, Date dataNascimento, String cpf, int numeroCartao) {
     this.nome = nome;
