@@ -47,8 +47,8 @@ public class Principal {
         compositor_dao.criarSemMusica(compositor3);
         compositor_dao.criarSemMusica(compositor4);
 
-        compositor_dao.deleteCompositorSemId(compositor2);
-        compositor_dao.deleteCompositorSemId(compositor3);
+        compositor_dao.deleteCompositor(compositor2);
+        compositor_dao.deleteCompositor(compositor3);
     }
 }
 

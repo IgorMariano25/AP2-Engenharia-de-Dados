@@ -4,16 +4,9 @@ import java.util.ArrayList;
 
 public class Autor {
   private String nome;
-  private String novoNome;
   private int id;
   private ArrayList<Musica> musicas;
   
-  public Autor(String nome, int id) {
-    this.nome = nome;
-    this.id = id;
-    this.musicas = new ArrayList<Musica>();
-  }
-
   public Autor(String nome) {
     this.nome = nome;
     this.musicas = new ArrayList<Musica>();

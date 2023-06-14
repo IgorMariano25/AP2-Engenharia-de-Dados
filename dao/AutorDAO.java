@@ -39,9 +39,8 @@ public class AutorDAO {
 
                 try (ResultSet rs = pstm.executeQuery()) {
                     if (rs.next()) {
-                        int idRetornado = rs.getInt("id");
                         String nome = rs.getString("nome");
-                        Autor autor = new Autor(nome, idRetornado);
+                        Autor autor = new Autor(nome);
                         return autor;
                     }
                 }
