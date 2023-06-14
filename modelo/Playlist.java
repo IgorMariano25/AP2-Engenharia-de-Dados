@@ -7,6 +7,7 @@ public class Playlist {
     private int id;
     private Date dataCriacao;
     private String titulo;
+    private String letra;
     private int visibilidade;
     private Categoria categoria;
     private ArrayList<Musica> musicas;
