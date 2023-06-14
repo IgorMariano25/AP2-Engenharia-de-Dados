@@ -1,5 +1,6 @@
 package modelo;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Playlist {
@@ -9,12 +10,12 @@ public class Playlist {
   private int visibilidade;
   private Categoria categoria;
   
-  public Playlist(int id, Date dataCriacao, String titulo, int visibilidade, String fkCategoria) {
+  public Playlist(int id, Date dataCriacao, String titulo, int visibilidade, Categoria categoria) {
     this.id = id;
     this.dataCriacao = dataCriacao;
     this.titulo = titulo;
     this.visibilidade = visibilidade;
-    this.fkCategoria = fkCategoria;
+    this.categoria = categoria;
   }
   
   public int getId() {
