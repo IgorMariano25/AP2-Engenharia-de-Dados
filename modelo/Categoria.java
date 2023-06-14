@@ -2,7 +2,7 @@ package modelo;
 
 public class Categoria {
   private String nome;
-  private int fkMusica;
+  private ArrayList<Playlist> playlists;
   
   public Categoria(String nome, int fkMusica) {
     this.nome = nome;
