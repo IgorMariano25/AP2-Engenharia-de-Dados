@@ -61,4 +61,17 @@ public class CategoriaDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public void deleteCategoriaSemId(Categoria categoria) {
+        try {
+            String sql = "DELETE FROM categoria WHERE nome = ?";
+
+            try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+                pstm.setString(1, categoria.getNome());
+                pstm.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
