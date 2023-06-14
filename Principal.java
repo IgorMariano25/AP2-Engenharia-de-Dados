@@ -23,18 +23,14 @@ public class Principal {
         Autor autor2 = new Autor("Guilherme Felix");
         Autor autor3 = new Autor("Felipe Castelhano");
 
-      
         AutorDAO autor_dao = new AutorDAO(connection);
         autor_dao.criarSemMusica(autor1);
         autor_dao.criarSemMusica(autor2);
         autor_dao.criarSemMusica(autor3);
 
-
         autor_dao.retornarPeloId(1);
         autor_dao.retornarPeloId(2);
         autor_dao.retornarPeloId(3);
-        
-
 
         //Criando Compositores
         Compositor compositor2 = new Compositor("Igor Mariano");
@@ -51,12 +47,6 @@ public class Principal {
         compositor_dao.criarSemMusica(compositor3);
         compositor_dao.criarSemMusica(compositor4);
 
-        compositor2.setNome("João");
-        compositor3.setNome("Pedro");
-        compositor4.setNome("Paula");
-        compositor_dao.updateCompositorSemId(compositor2);
-        compositor_dao.updateCompositorSemId(compositor3);
-        compositor_dao.updateCompositorSemId(compositor4);
         compositor_dao.deleteCompositorSemId(compositor2);
         compositor_dao.deleteCompositorSemId(compositor3);
     }

@@ -52,70 +52,7 @@ public class AutorDAO {
         return null;
     }
 
-    public Autor retornarPeloNome(Autor autor) {
-        String sql = "SELECT * FROM autor WHERE nome = ?";
-
-        try (PreparedStatement pstm = connection.prepareStatement(sql)) {
-            pstm.setString(1, autor.getNome());
-
-            try (ResultSet rs = pstm.executeQuery()) {
-                if (rs.next()) {
-                    int idRetornado = rs.getInt("id");
-                    String nome = rs.getString("nome");
-                    Autor RetornaAutor = new Autor(nome, idRetornado);
-                    return RetornaAutor;
-                }
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        return null;
-    }
-
-    public void updateAutorComId(Autor autor, int id) {
-        try {
-            String sql = "UPDATE autor SET nome = ? WHERE id = ?";
-
-            try (PreparedStatement pstm = connection.prepareStatement(sql)) {
-                pstm.setString(1, autor.getNome());
-                pstm.setInt(2, autor.getId());
-                pstm.executeUpdate();
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void updateAutorSemId(Autor autor) {
-        try {
-            String sql = "UPDATE autor SET nome = ? WHERE nome = ?";
-
-            try (PreparedStatement pstm = connection.prepareStatement(sql)) {
-                pstm.setString(1, autor.getNovoNome());
-                pstm.setString(2, autor.getNome());
-                pstm.executeUpdate();
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void deleteAutorComId(Autor autor, int id) {
-        try {
-            String sql = "DELETE FROM autor WHERE id = ? AND nome = ?";
-
-            try (PreparedStatement pstm = connection.prepareStatement(sql)) {
-                pstm.setInt(1, autor.getId());
-                pstm.setString(2, autor.getNome());
-                pstm.executeUpdate();
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-        public void deleteAutorSemId(Autor autor) {
+        public void deleteAutor(Autor autor) {
         try {
             String sql = "DELETE FROM autor WHERE nome = ?";
 
@@ -127,27 +64,4 @@ public class AutorDAO {
             throw new RuntimeException(e);
         }
     }
-
-    // public List<Autor> getAll() {
-    //     try {
-    //         String sql = "SELECT * FROM autor";
-
-    //         try (PreparedStatement pstm = connection.prepareStatement(sql)) {
-    //             try (ResultSet rs = pstm.executeQuery()) {
-    //                 List<Autor> autores = new ArrayList<>();
-
-    //                 while (rs.next()) {
-    //                     Autor autor = new Autor(sql);
-    //                     autor.setId(rs.getInt("id"));
-    //                     autor.setNome(rs.getString("nome"));
-    //                     autores.add(autor);
-    //                 }
-
-    //                 return autores;
-    //             }
-    //         }
-    //     } catch (SQLException e) {
-    //         throw new RuntimeException(e);
-    //     }
-    // }
 }

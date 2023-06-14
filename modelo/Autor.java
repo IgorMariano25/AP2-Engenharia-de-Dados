@@ -30,14 +30,6 @@ public class Autor {
     this.nome = nome;
   }
 
-  public String getNovoNome() {
-    return novoNome;
-  }
-
-  public void setNovoNome(String novoNome) {
-    this.novoNome = novoNome;
-  }
-
   public int getId() {
     return id;
   }

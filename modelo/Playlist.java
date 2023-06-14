@@ -25,6 +25,7 @@ public class Playlist {
       this.categoria = categoria;
       this.musicas = new ArrayList<Musica>();
     }
+
     public int getId() {
       return id;
     }
