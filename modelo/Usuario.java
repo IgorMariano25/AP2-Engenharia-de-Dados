@@ -59,9 +59,10 @@ public class Usuario {
   public void setNumeroCartao(int numeroCartao) {
     this.numeroCartao = numeroCartao;
   }
-  public int getFkPlaylist() {
-    return fkPlaylist;
-  }
+
+    public void addPlaylists(Playlist playlist) {
+      this.playlists.add(playlist);
+    }
   public void setFkPlaylist(int fkPlaylist) {
     this.fkPlaylist = fkPlaylist;
   }
