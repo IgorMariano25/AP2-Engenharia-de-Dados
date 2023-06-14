@@ -1,6 +1,5 @@
 package modelo;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 public class Playlist {
@@ -42,11 +41,12 @@ public class Playlist {
   public void setVisibilidade(int visibilidade) {
     this.visibilidade = visibilidade;
   }
-  public String getFkCategoria() {
-    return fkCategoria;
-  }
-  public void setFkCategoria(String fkCategoria) {
-    this.fkCategoria = fkCategoria;
+
+    public Categoria getCategoria() {
+    return categoria;
   }
 
+  public void setCategoria(Categoria categoria) {
+    this.categoria = categoria;
+  }
 }
