@@ -7,9 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import modelo.Compositor;
-import modelo.Compositor;
-import modelo.Compositor;
-import modelo.Compositor;
 
 public class CompositorDAO {
 
