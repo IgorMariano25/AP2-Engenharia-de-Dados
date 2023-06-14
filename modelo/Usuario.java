@@ -19,13 +19,12 @@ public class Usuario {
     this.playlists = new ArrayList<Playlist>();
   }
   
-  public Usuario(String nome, Date dataNascimento, String cpf, int numeroCartao, int fkPlaylist, String usuarioCol) {
+  public Usuario(String nome, Date dataNascimento, String cpf, int numeroCartao) {
     this.nome = nome;
     this.dataNascimento = dataNascimento;
     this.cpf = cpf;
     this.numeroCartao = numeroCartao;
-    this.fkPlaylist = fkPlaylist;
-    this.usuarioCol = usuarioCol;
+    this.playlists = new ArrayList<Playlist>();
   }
   
   public String getNome() {
