@@ -29,4 +29,44 @@ public class PlaylistDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public Playlist lerPlaylistSemId(Playlist playlist) {
+        try {
+            String sql = "SELECT * FROM playlist WHERE titulo = ?";
+
+            try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+                pstm.setString(4, playlist.getTitulo());
+
+                try (ResultSet rs = pstm.executeQuery()) {
+                    if (rs.next()) {
+                        Playlist lerPlaylistSemId = new Playlist(null, rs.getString("titulo"), false, null);
+                        return lerPlaylistSemId;
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
+        public Playlist lerPlaylistComId(Playlist playlist, int id) {
+        try {
+            String sql = "SELECT * FROM playlist WHERE id = ?";
+
+            try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+                pstm.setInt(1, playlist.getId());
+
+                try (ResultSet rs = pstm.executeQuery()) {
+                    if (rs.next()) {
+                        Playlist lerPlaylistSemId = new Playlist(rs.getInt(id), null, null, false, null);
+                        return lerPlaylistSemId;
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
 }
