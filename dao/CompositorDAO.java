@@ -28,26 +28,28 @@ public class CompositorDAO {
         }
     }
 
-    // VERIFICAR COM A TALITA
 
-    // public Compositor lerCompositorSemId(Compositor compositor) {
-    //     String sql = "SELECT * FROM compositor WHERE nome = ?";
+    public Compositor retornarPeloId(int id) {
+        try {
+            String sql = "SELECT * FROM compositor WHERE id = ?";
 
-    //     try (PreparedStatement pstm = connection.prepareStatement(sql)) {
-    //         pstm.setString(1, compositor.getNome());
+            try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+                pstm.setInt(1, id);
 
-    //         try (ResultSet rs = pstm.executeQuery()) {
-    //             if (rs.next()) {
-    //                 Compositor lerCompositorSemId = new Compositor(rs.getString("nome"));
-    //                 return lerCompositorSemId;
-    //             }
-    //         }
-    //     } catch (SQLException e) {
-    //         throw new RuntimeException(e);
-    //     }
-
-    //     return null;
-    // }
+                try (ResultSet rs = pstm.executeQuery()) {
+                    if (rs.next()) {
+                        int idRetornado = rs.getInt("id");
+                        String nome = rs.getString("nome");
+                        Compositor compositor = new Compositor(nome, idRetornado);
+                        return compositor;
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
 
     public void updateCompositorSemId(Compositor compositor) {
         try {
