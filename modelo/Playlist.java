@@ -16,6 +16,13 @@ public class Playlist {
     this.visibilidade = visibilidade;
     this.categoria = categoria;
   }
+
+    public Playlist(Date dataCriacao, String titulo, int visibilidade, Categoria categoria) {
+    this.dataCriacao = dataCriacao;
+    this.titulo = titulo;
+    this.visibilidade = visibilidade;
+    this.categoria = categoria;
+  }
   
   public int getId() {
     return id;
