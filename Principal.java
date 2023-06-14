@@ -18,65 +18,46 @@ public class Principal {
         ConnectionFactory fabricaDeConexao = new ConnectionFactory();
         Connection connection = fabricaDeConexao.recuperaConexao();
 
-        // Autores
-        // Autor a_1 = new Autor("Mariza Montes");
-        Autor teste1 = new Autor("Igor Mariano");
-        Autor teste2 = new Autor("Guilherme Felix");
-        Autor teste3 = new Autor("Felipe Castelhano");
-        // Musica m_1 = new Musica("Vel infância", "qualquer coisa", new Date(2002, 7,
-        // 24), 50, 13);
+        //Criando Autores
+        Autor autor1 = new Autor("Igor Mariano");
+        Autor autor2 = new Autor("Guilherme Felix");
+        Autor autor3 = new Autor("Felipe Castelhano");
 
-        // a_1.addMusica(m_1);
-        // m_1.addAutores(a_1);
+      
+        AutorDAO autor_dao = new AutorDAO(connection);
+        autor_dao.criarSemMusica(autor1);
+        autor_dao.criarSemMusica(autor2);
+        autor_dao.criarSemMusica(autor3);
 
-        // AutorDAO a_dao = new AutorDAO(connection);
-        // a_dao.criarSemMusica(a_1);
 
-        AutorDAO teste1_dao = new AutorDAO(connection);
-        teste1_dao.criarSemMusica(teste1);
-
-        AutorDAO teste2_dao = new AutorDAO(connection);
-        teste2_dao.criarSemMusica(teste2);
-        // teste2_dao.updateAutorSemId(teste2);
-
-        AutorDAO teste3_dao = new AutorDAO(connection);
-        teste3_dao.criarSemMusica(teste3);
-
-        // teste1_dao.lerAutoresSemId(teste1);
-        // teste2_dao.lerAutoresSemId(teste2);
-        // teste2.setNovoNome("Valmir");
-        // // teste2_dao.updateAutorSemId(teste2);
-        teste3_dao.deleteAutorSemId(teste3);
-
-        // Compositores
-        Compositor a_2 = new Compositor("Igor Mariano");
-        Compositor a_3 = new Compositor("Felipe Catelhano");
-        Compositor a_4 = new Compositor("Guilherme Felix");
+        //Criando Compositores
+        Compositor compositor2 = new Compositor("Igor Mariano");
+        Compositor compositor3 = new Compositor("Felipe Catelhano");
+        Compositor compositor4 = new Compositor("Guilherme Felix");
 
         Musica m_2 = new Musica("Exemplo", "Bora ver", new Date(2002, 7, 24), 50, 13);
-        a_2.addMusica(m_2);
-        m_2.addCompositor(a_2);
+        compositor2.addMusica(m_2);
+        m_2.addCompositor(compositor2);
 
-        CompositorDAO a_dao_2 = new CompositorDAO(connection);
-        CompositorDAO a_dao_3 = new CompositorDAO(connection);
-        CompositorDAO a_dao_4 = new CompositorDAO(connection);
-        a_dao_2.criarSemMusica(a_2);
-        a_dao_3.criarSemMusica(a_3);
-        a_dao_4.criarSemMusica(a_4);
+        CompositorDAO compositor_dao = new CompositorDAO(connection);
+      
+        compositor_dao.criarSemMusica(compositor2);
+        compositor_dao.criarSemMusica(compositor3);
+        compositor_dao.criarSemMusica(compositor4);
 
-        a_2.setNome("João");
-        a_3.setNome("Pedro");
-        a_4.setNome("Paula");
-        a_dao_2.updateCompositorSemId(a_2);
-        a_dao_3.updateCompositorSemId(a_3);
-        a_dao_4.updateCompositorSemId(a_4);
-        // a_2.atualizarNome();
-        // a_3.atualizarNome();
-        // a_4.atualizarNome();
+        compositor2.setNome("João");
+        compositor3.setNome("Pedro");
+        compositor4.setNome("Paula");
+        compositor_dao.updateCompositorSemId(compositor2);
+        compositor_dao.updateCompositorSemId(compositor3);
+        compositor_dao.updateCompositorSemId(compositor4);
+        // compositor2.atualizarNome();
+        // compositor3.atualizarNome();
+        // compositor4.atualizarNome();
 
-        a_dao_2.deleteCompositorSemId(a_2);
-        a_dao_3.deleteCompositorSemId(a_3);
-        a_dao_4.deleteCompositorSemId(a_4);
+        compositor_dao.deleteCompositorSemId(compositor2);
+        compositor_dao.deleteCompositorSemId(compositor3);
+        compositor_dao.deleteCompositorSemId(compositor4);
     }
 }
 
