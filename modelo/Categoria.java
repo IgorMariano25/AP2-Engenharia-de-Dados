@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.ArrayList;
+
 public class Categoria {
   private String nome;
   private ArrayList<Playlist> playlists;
