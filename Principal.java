@@ -51,6 +51,7 @@ public class Principal {
         categoriaDAO.criarSemMusica(categoria1);
         categoriaDAO.criarSemMusica(categoria2);
         categoriaDAO.criarSemMusica(categoria3);
+        categoriaDAO.deleteCategoriaSemId(categoria1);
 
         CompositorDAO compositor_dao = new CompositorDAO(connection);
       
