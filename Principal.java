@@ -30,6 +30,12 @@ public class Principal {
         autor_dao.criarSemMusica(autor3);
 
 
+        autor_dao.retornarPeloId(1);
+        autor_dao.retornarPeloId(2);
+        autor_dao.retornarPeloId(3);
+        
+
+
         //Criando Compositores
         Compositor compositor2 = new Compositor("Igor Mariano");
         Compositor compositor3 = new Compositor("Felipe Catelhano");
@@ -51,13 +57,8 @@ public class Principal {
         compositor_dao.updateCompositorSemId(compositor2);
         compositor_dao.updateCompositorSemId(compositor3);
         compositor_dao.updateCompositorSemId(compositor4);
-        // compositor2.atualizarNome();
-        // compositor3.atualizarNome();
-        // compositor4.atualizarNome();
-
         compositor_dao.deleteCompositorSemId(compositor2);
         compositor_dao.deleteCompositorSemId(compositor3);
-        compositor_dao.deleteCompositorSemId(compositor4);
     }
 }
 
