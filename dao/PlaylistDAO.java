@@ -87,10 +87,37 @@ public class PlaylistDAO {
 
     public void updatePlaylistSemId(Playlist playlist) {
         try {
-            String sql = "UPDATE playlist SET nome = ? WHERE nome = ?";
+            String sql = "UPDATE playlist SET titulo = ? WHERE nome = ?";
 
             try (PreparedStatement pstm = connection.prepareStatement(sql)) {
                 pstm.setString(2, playlist.getTitulo());
+                pstm.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void deletePlaylistComId(Playlist playlist, int id) {
+        try {
+            String sql = "DELETE FROM playlist WHERE id = ? AND titulo = ?";
+
+            try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+                pstm.setInt(1, playlist.getId());
+                pstm.setString(2, playlist.getTitulo());
+                pstm.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void deletePlaylistSemId(Playlist playlist) {
+        try {
+            String sql = "DELETE FROM playlist WHERE titulo = ?";
+
+            try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+                pstm.setString(1, playlist.getTitulo());
                 pstm.executeUpdate();
             }
         } catch (SQLException e) {
