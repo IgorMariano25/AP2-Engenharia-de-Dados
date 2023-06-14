@@ -12,7 +12,7 @@ import modelo.Musica;
 import modelo.Compositor;
 
 public class Principal {
-
+    
     public static void main(String[] args) throws SQLException {
 
         ConnectionFactory fabricaDeConexao = new ConnectionFactory();

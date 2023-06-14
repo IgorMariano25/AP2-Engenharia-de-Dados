@@ -2,6 +2,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -68,5 +69,32 @@ public class PlaylistDAO {
             throw new RuntimeException(e);
         }
         return null;
+    }
+
+    public void updatePlaylistComId(Playlist playlist, int id) {
+        try {
+            String sql = "UPDATE playlist SET titulo = ? WHERE id = ?";
+
+            try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+                pstm.setInt(1, playlist.getId());
+                pstm.setString(2, playlist.getTitulo());
+                pstm.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void updatePlaylistSemId(Playlist playlist) {
+        try {
+            String sql = "UPDATE playlist SET nome = ? WHERE nome = ?";
+
+            try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+                pstm.setString(2, playlist.getTitulo());
+                pstm.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
