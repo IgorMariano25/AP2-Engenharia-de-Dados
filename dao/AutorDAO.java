@@ -30,7 +30,7 @@ public class AutorDAO {
             throw new RuntimeException(e);
         }
     }
-      public Autor lerAutoresComId(Autor autor, int id) {
+      public Autor retornarPeloId(int id) {
         try {
             String sql = "SELECT * FROM autor WHERE id = ?";
 
@@ -39,10 +39,10 @@ public class AutorDAO {
 
                 try (ResultSet rs = pstm.executeQuery()) {
                     if (rs.next()) {
-                        Autor leituraAutorComId = new Autor(sql);
-                        leituraAutorComId.setId(rs.getInt("id"));
-                        leituraAutorComId.setNome(rs.getString("nome"));
-                        return leituraAutorComId;
+                        int idRetornado = rs.getInt("id");
+                        String nome = rs.getString("nome");
+                        Autor autor = new Autor(nome, idRetornado);
+                        return autor;
                     }
                 }
             }
@@ -52,7 +52,7 @@ public class AutorDAO {
         return null;
     }
 
-    public Autor lerAutoresSemId(Autor autor) {
+    public Autor retornarPeloNome(Autor autor) {
         String sql = "SELECT * FROM autor WHERE nome = ?";
 
         try (PreparedStatement pstm = connection.prepareStatement(sql)) {
@@ -60,8 +60,10 @@ public class AutorDAO {
 
             try (ResultSet rs = pstm.executeQuery()) {
                 if (rs.next()) {
-                    Autor leituraAutorSemId = new Autor(rs.getString("nome"));
-                    return leituraAutorSemId;
+                    int idRetornado = rs.getInt("id");
+                    String nome = rs.getString("nome");
+                    Autor RetornaAutor = new Autor(nome, idRetornado);
+                    return RetornaAutor;
                 }
             }
         } catch (SQLException e) {
