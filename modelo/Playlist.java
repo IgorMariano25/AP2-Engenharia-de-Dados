@@ -11,23 +11,25 @@ public class Playlist {
     private Categoria categoria;
     private ArrayList<Musica> musicas;
     
-    public Playlist(int id, Date dataCriacao, String titulo, int visibilidade, Categoria categoria) {
+    public Playlist(int id, Date dataCriacao, String titulo,String letra, int visibilidade, Categoria categoria) {
       this.id = id;
       this.dataCriacao = dataCriacao;
       this.titulo = titulo;
+      this.letra = letra;
       this.visibilidade = visibilidade;
       this.categoria = categoria;
       this.musicas = new ArrayList<Musica>();
     }
 
-    public Playlist(Date dataCriacao, String titulo, int visibilidade, Categoria categoria) {
+    public Playlist(Date dataCriacao, String titulo,String letra, int visibilidade, Categoria categoria) {
       this.dataCriacao = dataCriacao;
       this.titulo = titulo;
+      this.letra = letra;
       this.visibilidade = visibilidade;
       this.categoria = categoria;
-          this.musicas = new ArrayList<Musica>();
+      this.musicas = new ArrayList<Musica>();
     }
-    
+
     public int getId() {
       return id;
     }
