@@ -6,24 +6,21 @@ public class Playlist {
     private int id;
     private Date dataCriacao;
     private String titulo;
-    private String letra;
     private int visibilidade;
     private Categoria categoria;
     private ArrayList<Musica> musicas;
-    public Playlist(int id, Date dataCriacao, String titulo,String letra, int visibilidade, Categoria categoria) {
+    public Playlist(int id, Date dataCriacao, String titulo, int visibilidade, Categoria categoria) {
       this.id = id;
       this.dataCriacao = dataCriacao;
       this.titulo = titulo;
-      this.letra = letra;
       this.visibilidade = visibilidade;
       this.categoria = categoria;
       this.musicas = new ArrayList<Musica>();
     }
 
-    public Playlist(Date dataCriacao, String titulo,String letra, int visibilidade, Categoria categoria) {
+    public Playlist(Date dataCriacao, String titulo, int visibilidade, Categoria categoria) {
       this.dataCriacao = dataCriacao;
       this.titulo = titulo;
-      this.letra = letra;
       this.visibilidade = visibilidade;
       this.categoria = categoria;
       this.musicas = new ArrayList<Musica>();
@@ -47,13 +44,6 @@ public class Playlist {
       this.titulo = titulo;
     }
 
-    public String getLetra() {
-      return letra;
-    }
-
-    public void setLetra(String letra) {
-      this.letra = letra;
-    }
     public int getVisibilidade() {
       return visibilidade;
     }
