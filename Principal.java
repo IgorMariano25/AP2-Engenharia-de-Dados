@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import dao.AutorDAO;
+import dao.CategoriaDAO;
 import dao.CompositorDAO;
 import dao.ConnectionFactory;
 import modelo.Autor;
+import modelo.Categoria;
 import modelo.Musica;
 import modelo.Compositor;
 
@@ -34,12 +36,21 @@ public class Principal {
 
         //Criando Compositores
         Compositor compositor2 = new Compositor("Igor Mariano");
-        Compositor compositor3 = new Compositor("Felipe Catelhano");
+        Compositor compositor3 = new Compositor("Felipe Castelhano");
         Compositor compositor4 = new Compositor("Guilherme Felix");
 
         Musica m_2 = new Musica("Exemplo", "Bora ver", new Date(2002, 7, 24), 50, 13);
         compositor2.addMusica(m_2);
         m_2.addCompositor(compositor2);
+
+        Categoria categoria1 = new Categoria("Funk");
+        Categoria categoria2 = new Categoria("Rap");
+        Categoria categoria3 = new Categoria("Rock");
+
+        CategoriaDAO categoriaDAO = new CategoriaDAO(connection);
+        categoriaDAO.criarSemMusica(categoria1);
+        categoriaDAO.criarSemMusica(categoria2);
+        categoriaDAO.criarSemMusica(categoria3);
 
         CompositorDAO compositor_dao = new CompositorDAO(connection);
       
@@ -49,6 +60,8 @@ public class Principal {
 
         compositor_dao.deleteCompositor(compositor2);
         compositor_dao.deleteCompositor(compositor3);
+
+
     }
 }
 
