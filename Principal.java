@@ -51,9 +51,6 @@ public class Principal {
         compositor_dao.updateCompositorSemId(compositor2);
         compositor_dao.updateCompositorSemId(compositor3);
         compositor_dao.updateCompositorSemId(compositor4);
-        // compositor2.atualizarNome();
-        // compositor3.atualizarNome();
-        // compositor4.atualizarNome();
 
         compositor_dao.deleteCompositorSemId(compositor2);
         compositor_dao.deleteCompositorSemId(compositor3);
