@@ -17,6 +17,7 @@ public class Playlist {
     this.titulo = titulo;
     this.visibilidade = visibilidade;
     this.categoria = categoria;
+    this.musicas = new ArrayList<Musica>();
   }
 
     public Playlist(Date dataCriacao, String titulo, int visibilidade, Categoria categoria) {
@@ -24,6 +25,7 @@ public class Playlist {
     this.titulo = titulo;
     this.visibilidade = visibilidade;
     this.categoria = categoria;
+        this.musicas = new ArrayList<Musica>();
   }
   
   public int getId() {
