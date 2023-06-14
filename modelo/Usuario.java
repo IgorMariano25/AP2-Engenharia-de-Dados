@@ -1,5 +1,6 @@
 package modelo;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Usuario {
@@ -26,7 +27,7 @@ public class Usuario {
     this.numeroCartao = numeroCartao;
     this.playlists = new ArrayList<Playlist>();
   }
-  
+
   public int getId() {
     return id;
   }
@@ -63,14 +64,4 @@ public class Usuario {
     public void addPlaylists(Playlist playlist) {
       this.playlists.add(playlist);
     }
-  public void setFkPlaylist(int fkPlaylist) {
-    this.fkPlaylist = fkPlaylist;
-  }
-  public String getUsuarioCol() {
-    return usuarioCol;
-  }
-  public void setUsuarioCol(String usuarioCol) {
-    this.usuarioCol = usuarioCol;
-  }
-
 }
