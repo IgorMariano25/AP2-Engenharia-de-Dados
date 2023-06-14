@@ -38,9 +38,8 @@ public class CompositorDAO {
 
                 try (ResultSet rs = pstm.executeQuery()) {
                     if (rs.next()) {
-                        int idRetornado = rs.getInt("id");
                         String nome = rs.getString("nome");
-                        Compositor compositor = new Compositor(nome, idRetornado);
+                        Compositor compositor = new Compositor(nome);
                         return compositor;
                     }
                 }
