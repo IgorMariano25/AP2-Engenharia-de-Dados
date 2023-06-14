@@ -4,9 +4,9 @@ public class Categoria {
   private String nome;
   private ArrayList<Playlist> playlists;
   
-  public Categoria(String nome, int fkMusica) {
+  public Categoria(String nome) {
     this.nome = nome;
-    this.fkMusica = fkMusica;
+    this.playlists = new ArrayList<Playlist>();
   }
   
   public String getNome() {
