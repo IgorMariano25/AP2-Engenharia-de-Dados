@@ -18,7 +18,7 @@ public class MusicaDAO {
 
     public void criarMusica(Musica musica) {
         try {
-            String sql = "INSERT INTO Musica (id, Titulo, Letra, Data_Lancamento, Duracao_segundos, Censura, Categoria) " +
+            String sql = "INSERT INTO Musica (id, Título, Letra, Data_Lancamento, Duracao_segundos, Censura, fk_categoria) " +
                            "VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, musica.getId());
