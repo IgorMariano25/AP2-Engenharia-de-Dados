@@ -40,10 +40,6 @@ public class Principal {
         Compositor compositor3 = new Compositor("Felipe Castelhano");
         Compositor compositor4 = new Compositor("Guilherme Felix");
 
-        Musica m_2 = new Musica("Exemplo", "Bora ver", new Date(2002, 7, 24), 50, 13);
-        compositor2.addMusica(m_2);
-        m_2.addCompositor(compositor2);
-
         Categoria categoria1 = new Categoria("Funk");
         Categoria categoria2 = new Categoria("Rap");
         Categoria categoria3 = new Categoria("Rock");
