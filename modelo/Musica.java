@@ -47,6 +47,17 @@ public class Musica {
       this.compositores = new ArrayList<Compositor>();
       this.autores = new ArrayList<Autor>();
     }
+    
+    public Musica(String titulo, String letra, Date dataLancamento, int duracaoSegundos, int censura, Categoria categoria) {
+      this.titulo = titulo;
+      this.letra = letra;
+      this.dataLancamento = dataLancamento;
+      this.duracaoSegundos = duracaoSegundos;
+      this.censura = censura;
+      this.categoria = categoria;
+      this.compositores = new ArrayList<Compositor>();
+      this.autores = new ArrayList<Autor>();
+    }
 
     public void addCompositor(Compositor compositor) {
       this.compositores.add(compositor);
