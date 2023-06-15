@@ -12,10 +12,10 @@ import modelo.Musica;
 public class MusicaDAO {
     private Connection connection;
 
-    public void salvar(Musica musica) {
+    public void criarMusica(Musica musica) {
         try {
-            String sql = "INSERT INTO Musica (id, Título, Letra, Data_Lancamento, Duracao_segundos, Censura) " +
-                           "VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO Musica (id, Título, Letra, Data_Lancamento, Duracao_segundos, Censura, Categoria) " +
+                           "VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, musica.getId());
             statement.setString(2, musica.getTitulo());
@@ -23,6 +23,7 @@ public class MusicaDAO {
             statement.setDate(4, new java.sql.Date(musica.getDataLancamento().getTime()));
             statement.setInt(5, musica.getDuracaoSegundos());
             statement.setInt(6, musica.getCensura());
+            statement.setString(7, musica.getCategoria().getNome());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -32,7 +33,7 @@ public class MusicaDAO {
     public void atualizar(Musica musica) {
         try {
             String sql = "UPDATE Musica SET Título = ?, Letra = ?, Data_Lancamento = ?, " +
-                           "Duracao_segundos = ?, Censura = ? WHERE id = ?";
+                           "Duracao_segundos = ?, Censura = ?, Categoria = ?, WHERE id = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, musica.getTitulo());
             statement.setString(2, musica.getLetra());
@@ -40,6 +41,7 @@ public class MusicaDAO {
             statement.setInt(4, musica.getDuracaoSegundos());
             statement.setInt(5, musica.getCensura());
             statement.setInt(6, musica.getId());
+            statement.setString(7, musica.getCategoria().getNome());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

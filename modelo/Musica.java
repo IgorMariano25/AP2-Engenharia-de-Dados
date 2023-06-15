@@ -15,6 +15,18 @@ public class Musica {
     private ArrayList<Compositor> compositores;
     private ArrayList<Autor> autores;
     
+    public Musica(int id, String titulo, String letra, Date dataLancamento, int duracaoSegundos, int censura, Categoria categoria) {
+      this.id = id;
+      this.titulo = titulo;
+      this.letra = letra;
+      this.dataLancamento = dataLancamento;
+      this.duracaoSegundos = duracaoSegundos;
+      this.censura = censura;
+      this.categoria = categoria;
+      this.compositores = new ArrayList<Compositor>();
+      this.autores = new ArrayList<Autor>();
+    }
+
     public Musica(int id, String titulo, String letra, Date dataLancamento, int duracaoSegundos, int censura) {
       this.id = id;
       this.titulo = titulo;
@@ -90,5 +102,13 @@ public class Musica {
 
     public void setCensura(int censura) {
       this.censura = censura;
+    }
+
+    public Categoria getCategoria() {
+      return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+      this.categoria = categoria;
     }
 }
