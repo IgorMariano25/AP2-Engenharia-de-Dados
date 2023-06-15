@@ -12,6 +12,10 @@ import modelo.Musica;
 public class MusicaDAO {
     private Connection connection;
 
+    public MusicaDAO(Connection connection) {
+        this.connection = connection;
+    }
+
     public void criarMusica(Musica musica) {
         try {
             String sql = "INSERT INTO Musica (id, Título, Letra, Data_Lancamento, Duracao_segundos, Censura, Categoria) " +

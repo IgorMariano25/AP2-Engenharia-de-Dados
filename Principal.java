@@ -8,6 +8,7 @@ import dao.AutorDAO;
 import dao.CategoriaDAO;
 import dao.CompositorDAO;
 import dao.ConnectionFactory;
+import dao.MusicaDAO;
 import modelo.Autor;
 import modelo.Categoria;
 import modelo.Musica;
@@ -52,6 +53,15 @@ public class Principal {
         categoriaDAO.criarSemMusica(categoria2);
         categoriaDAO.criarSemMusica(categoria3);
         categoriaDAO.deleteCategoriaSemId(categoria1);
+
+        Musica musica1 = new Musica("Back in black", "Back in black, i hit the sack", new Date(1980, 2,5), 255, 18);
+        Musica musica2 = new Musica("Tour", "Mas não sabe quanto cash eu fiz", new Date(2015, 7,10), 198, 16);
+        Musica musica3 = new Musica("Balmain", "Ela olhou eu também", new Date(2022, 12,16), 198, 16);
+        MusicaDAO musicaDAO = new MusicaDAO(connection);
+        musicaDAO.criarMusica(musica1);
+        musicaDAO.criarMusica(musica2);
+        musicaDAO.criarMusica(musica3);
+
 
         CompositorDAO compositor_dao = new CompositorDAO(connection);
       
