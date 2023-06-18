@@ -9,9 +9,11 @@ import dao.CategoriaDAO;
 import dao.CompositorDAO;
 import dao.ConnectionFactory;
 import dao.MusicaDAO;
+import dao.PlaylistDAO;
 import modelo.Autor;
 import modelo.Categoria;
 import modelo.Musica;
+import modelo.Playlist;
 import modelo.Compositor;
 
 public class Principal {
@@ -67,6 +69,14 @@ public class Principal {
 
         compositor_dao.deleteCompositor(compositor2);
         compositor_dao.deleteCompositor(compositor3);
+
+        PlaylistDAO playlistDAO = new PlaylistDAO(connection);
+        Playlist playlist1 = new Playlist(new Date(2022, 5, 3),"RapCaviar", true , categoria2);
+        playlistDAO.criarComMusica(playlist1, musica2);
+        Playlist playlist2 = new Playlist(new Date(2022, 5, 3),"Funk é vida", false, categoria1);
+        playlistDAO.criarComMusica(playlist2, musica3);
+        Playlist playlist3 = new Playlist(new Date(2022, 5, 3),"Rock vive", true , categoria3);
+        playlistDAO.criarComMusica(playlist3, musica1);
 
 
     }
