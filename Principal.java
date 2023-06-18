@@ -78,6 +78,8 @@ public class Principal {
         Playlist playlist3 = new Playlist(new Date(2022, 5, 3),"Rock vive", true , categoria3);
         playlistDAO.criarComMusica(playlist3, musica1);
 
+        playlistDAO.deletePlaylistComId(playlist3, 2);
+        playlistDAO.deletePlaylistSemId(playlist2);
 
     }
 }
