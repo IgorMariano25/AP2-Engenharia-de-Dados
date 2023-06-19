@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,7 +22,7 @@ public class PlaylistDAO {
             String sql = "INSERT INTO Playlist (Data_criacao, titulo, visibilidade, fk_categoria) " +
                     "VALUES (?, ?, ?, ?)";
             try (PreparedStatement pstm = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-                pstm.setDate(1, new java.sql.Date(playlist.getDataCriacao().getTime()));
+                pstm.setDate(1, Date.valueOf(playlist.getDataCriacao()));
                 pstm.setString(2, playlist.getTitulo());
                 pstm.setBoolean(3, playlist.getVisibilidade());
                 pstm.setString(4, playlist.getCategoria().getNome());
@@ -126,16 +127,25 @@ public class PlaylistDAO {
         }
     }
 
-    public void buscarPlaylistPeloTitulo(Playlist playlist){
+    public Playlist buscarPlaylistPeloTitulo(Playlist playlist){
         try {
-            String sql = "SELECT FROM playlist WHERE titulo = ?";
+            String sql = "SELECT * FROM playlist WHERE titulo = ?";
 
             try (PreparedStatement pstm = connection.prepareStatement(sql)) {
                 pstm.setString(1, playlist.getTitulo());
-                pstm.execute();
+
+
+                try (ResultSet rs = pstm.executeQuery()) {
+                    if (rs.next()) {
+                        String tituloPlaylist = rs.getString("titulo");
+                        Playlist lerPlaylist = new Playlist(tituloPlaylist);
+                        return lerPlaylist;
+                    }
+                }
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return null;
     }
 }
