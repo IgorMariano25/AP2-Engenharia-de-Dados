@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Compositor {
   private String nome;
+  private int id;
   private ArrayList<Musica> musicas;
 
   public Compositor(String nome) {
