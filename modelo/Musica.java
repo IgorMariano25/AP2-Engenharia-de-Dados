@@ -125,9 +125,6 @@ public class Musica {
       this.categoria = categoria;
     }
 
-    public void setDataLancamento(Timestamp timestamp) {
-    }
-
-    public void setDataLancamento(Date date) {
+    public void setCategoria(String string) {
     }
 }
