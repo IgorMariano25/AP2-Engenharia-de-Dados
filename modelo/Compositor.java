@@ -18,4 +18,9 @@ public class Compositor {
   public String getNome() {
     return nome;
   }
+
+  @Override
+  public String toString() {
+  return "Autor: " + nome;
+  }
 }
