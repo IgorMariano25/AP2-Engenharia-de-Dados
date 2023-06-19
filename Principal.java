@@ -56,6 +56,7 @@ public class Principal {
         Musica musica1 = new Musica("Back in black", "Back in black, i hit the sack", LocalDate.of(1980, 2,5), 255, 18, categoria3);
         Musica musica2 = new Musica("Tour", "Mas não sabe quanto cash eu fiz", LocalDate.of(2015, 7,10), 198, 16,categoria2);
         Musica musica3 = new Musica("Balmain", "Ela olhou eu também", LocalDate.of(2022, 12,16), 198, 16,categoria1);
+
         MusicaDAO musicaDAO = new MusicaDAO(connection);
         musicaDAO.criarMusica(musica1);
         musicaDAO.criarMusica(musica2);
@@ -65,11 +66,14 @@ public class Principal {
         CompositorDAO compositor_dao = new CompositorDAO(connection);
       
         compositor_dao.criarSemMusica(compositor1);
-        compositor_dao.criarSemMusica(compositor2);
+        compositor_dao.criarSemMusica(compositor2); 
         compositor_dao.criarSemMusica(compositor3);
 
-        compositor_dao.deleteCompositor(compositor1);
-        compositor_dao.deleteCompositor(compositor2);
+        autor_dao.criarComMusica(autor1, musica1);
+        compositor_dao.criarComMusica(compositor3, musica3);
+
+        // compositor_dao.deleteCompositor(compositor1);
+        // compositor_dao.deleteCompositor(compositor2);
 
         PlaylistDAO playlistDAO = new PlaylistDAO(connection);
         Playlist playlist1 = new Playlist(LocalDate.of(2022, 5, 3),"RapCaviar", true , categoria2);
@@ -82,7 +86,7 @@ public class Principal {
         playlistDAO.deletePlaylistComId(playlist3, 3);
         playlistDAO.deletePlaylistSemId(playlist2);
 
-         System.out.println(playlistDAO.buscarPlaylistPeloTitulo(playlist3).toString());
+        System.out.println(playlistDAO.buscarPlaylistPeloTitulo(playlist3).toString());
 
         System.out.println(autor_dao.lerAutor(autor3).toString());
         System.out.println(compositor_dao.lerCompositor(compositor3).toString());
