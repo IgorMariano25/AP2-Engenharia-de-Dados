@@ -67,4 +67,9 @@ public class Playlist {
     public void addMusica(Musica musica) {
       this.musicas.add(musica);
       }
+
+  @Override
+  public String toString() {
+    return "Título: " + titulo;
+  }
 }
