@@ -2,7 +2,7 @@ package modelo;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.LocalDate;
 import java.util.List;
 
 public class Musica {
@@ -92,11 +92,11 @@ public class Musica {
       this.letra = letra;
     }
 
-    public Date getDataLancamento() {
+    public LocalDate getDataLancamento() {
       return dataLancamento;
     }
 
-    public void setDataLancamento(Date dataLancamento) {
+    public void setDataLancamento(LocalDate dataLancamento) {
       this.dataLancamento = dataLancamento;
     }
 
