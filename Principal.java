@@ -80,7 +80,7 @@ public class Principal {
 
         playlistDAO.deletePlaylistComId(playlist3, 3);
         playlistDAO.deletePlaylistSemId(playlist2);
-
+        playlistDAO.buscarPlaylistPeloTitulo(playlist3);
     }
 }
 
