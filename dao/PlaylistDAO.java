@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 import modelo.Musica;
 import modelo.Playlist;
@@ -145,6 +146,26 @@ public class PlaylistDAO {
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+        return null;
+    }
+
+    public List<Musica> OuvirPlaylist(List<Musica> playlist) {
+        try {
+            String query = "SELECT Letra FROM Musica WHERE Título = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            
+            for (Musica musica : playlist) {
+                statement.setString(1, musica.getTitulo());
+                ResultSet resultSet = statement.executeQuery();
+                if (resultSet.next()) {
+                    musica.setLetra(resultSet.getString("Letra"));
+                }
+            }
+            
+            return playlist;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return null;
     }
