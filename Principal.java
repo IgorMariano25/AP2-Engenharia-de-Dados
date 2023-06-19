@@ -1,6 +1,7 @@
 import java.security.KeyStore.PasswordProtection;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -52,9 +53,9 @@ public class Principal {
         categoriaDAO.criarSemMusica(categoria3);
         // categoriaDAO.deleteCategoriaSemId(categoria1);
 
-        Musica musica1 = new Musica("Back in black", "Back in black, i hit the sack", new Date(1980, 2,5), 255, 18, categoria3);
-        Musica musica2 = new Musica("Tour", "Mas não sabe quanto cash eu fiz", new Date(2015, 7,10), 198, 16,categoria2);
-        Musica musica3 = new Musica("Balmain", "Ela olhou eu também", new Date(2022, 12,16), 198, 16,categoria1);
+        Musica musica1 = new Musica("Back in black", "Back in black, i hit the sack", LocalDate.of(1980, 2,5), 255, 18, categoria3);
+        Musica musica2 = new Musica("Tour", "Mas não sabe quanto cash eu fiz", LocalDate.of(2015, 7,10), 198, 16,categoria2);
+        Musica musica3 = new Musica("Balmain", "Ela olhou eu também", LocalDate.of(2022, 12,16), 198, 16,categoria1);
         MusicaDAO musicaDAO = new MusicaDAO(connection);
         musicaDAO.criarMusica(musica1);
         musicaDAO.criarMusica(musica2);
@@ -71,11 +72,11 @@ public class Principal {
         compositor_dao.deleteCompositor(compositor2);
 
         PlaylistDAO playlistDAO = new PlaylistDAO(connection);
-        Playlist playlist1 = new Playlist(new Date(2022, 5, 3),"RapCaviar", true , categoria2);
+        Playlist playlist1 = new Playlist(LocalDate.of(2022, 5, 3),"RapCaviar", true , categoria2);
         playlistDAO.criarComMusica(playlist1, musica2);
-        Playlist playlist2 = new Playlist(new Date(2022, 5, 3),"Funk é vida", false, categoria1);
+        Playlist playlist2 = new Playlist(LocalDate.of(2022, 5, 3),"Funk é vida", false, categoria1);
         playlistDAO.criarComMusica(playlist2, musica3);
-        Playlist playlist3 = new Playlist(new Date(2022, 5, 3),"Rock vive", true , categoria3);
+        Playlist playlist3 = new Playlist(LocalDate.of(2022, 5, 3),"Rock vive", true , categoria3);
         playlistDAO.criarComMusica(playlist3, musica1);
 
         playlistDAO.deletePlaylistComId(playlist3, 3);
@@ -83,6 +84,7 @@ public class Principal {
         // playlistDAO.buscarPlaylistPeloTitulo(playlist3);
 
         System.out.println(autor_dao.lerAutor(autor3).toString());
+        System.out.println(compositor_dao.lerCompositor(compositor3).toString());
     }
 }
 
