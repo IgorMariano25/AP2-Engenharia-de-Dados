@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `AP2`.`Playlist` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `Data_criacao` DATE NOT NULL,
   `titulo` VARCHAR(45) NOT NULL,
-  `visibildade` TINYINT NOT NULL,
+  `visibilidade` TINYINT NOT NULL,
   `fk_categoria` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_categoria`
