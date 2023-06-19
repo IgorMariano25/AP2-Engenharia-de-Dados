@@ -69,8 +69,8 @@ public class Principal {
         compositor_dao.criarSemMusica(compositor2); 
         compositor_dao.criarSemMusica(compositor3);
 
-        autor_dao.criarComMusica(autor1, musica1);
-        compositor_dao.criarComMusica(compositor3, musica3);
+        // autor_dao.criarComMusica(autor1, musica1);
+        // compositor_dao.criarComMusica(compositor3, musica3);
 
         // compositor_dao.deleteCompositor(compositor1);
         // compositor_dao.deleteCompositor(compositor2);
@@ -83,13 +83,14 @@ public class Principal {
         Playlist playlist3 = new Playlist(LocalDate.of(2022, 5, 3),"Rock vive", true , categoria3);
         playlistDAO.criarComMusica(playlist3, musica1);
 
-        playlistDAO.deletePlaylistComId(playlist3, 3);
-        playlistDAO.deletePlaylistSemId(playlist2);
+        // playlistDAO.deletePlaylistComId(playlist3, 3);
+        // playlistDAO.deletePlaylistSemId(playlist2);
 
         System.out.println(playlistDAO.buscarPlaylistPeloTitulo(playlist3).toString());
 
         System.out.println(autor_dao.lerAutor(autor3).toString());
         System.out.println(compositor_dao.lerCompositor(compositor3).toString());
+        System.out.println(musicaDAO.OuvirMusica(musica1));
     }
 }
 

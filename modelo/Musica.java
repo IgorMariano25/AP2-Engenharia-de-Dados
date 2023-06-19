@@ -130,4 +130,8 @@ public class Musica {
 
     public void setDataLancamento(Date date) {
     }
+  @Override
+  public String toString() {
+    return "Letra: " + letra;
+  }
 }
