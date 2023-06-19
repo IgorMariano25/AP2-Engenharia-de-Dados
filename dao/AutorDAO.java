@@ -109,13 +109,15 @@ public List<Musica> buscarTodosPorAutor(Autor autor) {
             pstm.setString(1, autor.getNome());
             ResultSet resultSet = pstm.executeQuery();
             while (resultSet.next()) {
-                Musica musica = new Musica(0, sql, sql, null, 0, 0);
-                musica.setId(resultSet.getInt("id"));
-                musica.setTitulo(resultSet.getString("Título"));
-                musica.setLetra(resultSet.getString("Letra"));
-                musica.setDataLancamento(resultSet.getTimestamp("Data_Lancamento"));
-                musica.setDuracaoSegundos(resultSet.getInt("Duracao_segundos"));
-                musica.setCensura(resultSet.getInt("Censura"));
+                Musica musica = new Musica(
+                    resultSet.getInt("id"),
+                    resultSet.getString("Título"),
+                    resultSet.getString("Letra"),
+                    resultSet.getDate("Data_Lancamento").toLocalDate(),
+                    resultSet.getInt("Duracao_segundos"),
+                    resultSet.getInt("Censura"),
+                    null
+                );
                 musicas.add(musica);
             }
         }
@@ -124,6 +126,7 @@ public List<Musica> buscarTodosPorAutor(Autor autor) {
     }
     return musicas;
 }
+
 
 
 }

@@ -72,13 +72,15 @@ public class MusicaDAO {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                Musica musica = new Musica(id, query, query, null, id, id);
-                musica.setId(resultSet.getInt("id"));
-                musica.setTitulo(resultSet.getString("Título"));
-                musica.setLetra(resultSet.getString("Letra"));
-                musica.setDataLancamento(resultSet.getDate("Data_Lancamento"));
-                musica.setDuracaoSegundos(resultSet.getInt("Duracao_segundos"));
-                musica.setCensura(resultSet.getInt("Censura"));
+                Musica musica = new Musica(
+                    resultSet.getInt("id"),
+                    resultSet.getString("Título"),
+                    resultSet.getString("Letra"),
+                    resultSet.getDate("Data_Lancamento").toLocalDate(),
+                    resultSet.getInt("Duracao_segundos"),
+                    resultSet.getInt("Censura"),
+                    null
+                );
                 return musica;
             }
         } catch (SQLException e) {
@@ -86,6 +88,8 @@ public class MusicaDAO {
         }
         return null;
     }
+    
+
 
     public List<Musica> buscarTodos() {
         List<Musica> musicas = new ArrayList<>();
@@ -94,13 +98,15 @@ public class MusicaDAO {
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                Musica musica = new Musica(0, sql, sql, null, 0, 0);
-                musica.setId(resultSet.getInt("id"));
-                musica.setTitulo(resultSet.getString("Título"));
-                musica.setLetra(resultSet.getString("Letra"));
-                musica.setDataLancamento(resultSet.getDate("Data_Lancamento"));
-                musica.setDuracaoSegundos(resultSet.getInt("Duracao_segundos"));
-                musica.setCensura(resultSet.getInt("Censura"));
+                Musica musica = new Musica(
+                    resultSet.getInt("id"),
+                    resultSet.getString("Título"),
+                    resultSet.getString("Letra"),
+                    resultSet.getDate("Data_Lancamento").toLocalDate(),
+                    resultSet.getInt("Duracao_segundos"),
+                    resultSet.getInt("Censura"),
+                    null
+                );
                 musicas.add(musica);
             }
         } catch (SQLException e) {
@@ -108,6 +114,7 @@ public class MusicaDAO {
         }
         return musicas;
     }
+    
 
     public Musica OuvirMusica(Musica musica) {
         try {
@@ -124,4 +131,28 @@ public class MusicaDAO {
         }
         return null;
     }
+
+    public Musica lerMusica(Musica musica) {
+        try {
+            String query = "SELECT id, titulo, dataLancamento, duracaoSegundos, censura, categoria FROM Musica WHERE Título = ?";
+            try (PreparedStatement pstm = connection.prepareStatement(query)) {
+                pstm.setString(1, musica.getTitulo());
+                ResultSet resultSet = pstm.executeQuery();
+                if (resultSet.next()) {
+                    musica.setId(resultSet.getInt("id"));
+                    musica.setTitulo(resultSet.getString("titulo"));
+                    musica.setDataLancamento(resultSet.getDate("dataLancamento").toLocalDate());
+                    musica.setDuracaoSegundos(resultSet.getInt("duracaoSegundos"));
+                    musica.setCensura(resultSet.getInt("censura"));
+                    musica.setCategoria(resultSet.getString("categoria"));
+                    return musica;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    
 }
