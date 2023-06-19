@@ -108,4 +108,20 @@ public class MusicaDAO {
         }
         return musicas;
     }
+
+    public Musica OuvirMusica(Musica musica) {
+        try {
+            String query = "SELECT Letra FROM Musica WHERE Título = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, musica.getTitulo());
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                musica.setLetra(resultSet.getString("Letra"));
+                return musica;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
