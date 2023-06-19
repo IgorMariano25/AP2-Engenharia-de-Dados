@@ -1,5 +1,6 @@
 package modelo;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,14 +9,14 @@ public class Musica {
     private int id;
     private String titulo;
     private String letra;
-    private Date dataLancamento;
+    private LocalDate dataLancamento;
     private int duracaoSegundos;
     private int censura;
     private Categoria categoria;
     private ArrayList<Compositor> compositores;
     private ArrayList<Autor> autores;
     
-    public Musica(int id, String titulo, String letra, Date dataLancamento, int duracaoSegundos, int censura, Categoria categoria) {
+    public Musica(int id, String titulo, String letra, LocalDate dataLancamento, int duracaoSegundos, int censura, Categoria categoria) {
       this.id = id;
       this.titulo = titulo;
       this.letra = letra;
@@ -27,7 +28,7 @@ public class Musica {
       this.autores = new ArrayList<Autor>();
     }
 
-    public Musica(int id, String titulo, String letra, Date dataLancamento, int duracaoSegundos, int censura) {
+    public Musica(int id, String titulo, String letra, LocalDate dataLancamento, int duracaoSegundos, int censura) {
       this.id = id;
       this.titulo = titulo;
       this.letra = letra;
@@ -38,7 +39,7 @@ public class Musica {
       this.autores = new ArrayList<Autor>();
     }
 
-    public Musica(String titulo, String letra, Date dataLancamento, int duracaoSegundos, int censura) {
+    public Musica(String titulo, String letra, LocalDate dataLancamento, int duracaoSegundos, int censura) {
       this.titulo = titulo;
       this.letra = letra;
       this.dataLancamento = dataLancamento;
@@ -48,7 +49,7 @@ public class Musica {
       this.autores = new ArrayList<Autor>();
     }
     
-    public Musica(String titulo, String letra, Date dataLancamento, int duracaoSegundos, int censura, Categoria categoria) {
+    public Musica(String titulo, String letra, LocalDate dataLancamento, int duracaoSegundos, int censura, Categoria categoria) {
       this.titulo = titulo;
       this.letra = letra;
       this.dataLancamento = dataLancamento;
