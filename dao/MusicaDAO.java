@@ -39,11 +39,11 @@ public class MusicaDAO {
     public void atualizar(Musica musica) {
         try {
             String sql = "UPDATE Musica SET Título = ?, Letra = ?, Data_Lancamento = ?, " +
-                    "Duracao_segundos = ?, Censura = ?, Categoria = ?, WHERE id = ?";
+                         "Duracao_segundos = ?, Censura = ?, Categoria = ?, WHERE id = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, musica.getTitulo());
             statement.setString(2, musica.getLetra());
-            statement.setDate(3, new java.sql.Date(musica.getDataLancamento().getTime()));
+            statement.setDate(3, Date.valueOf(musica.getDataLancamento()));
             statement.setInt(4, musica.getDuracaoSegundos());
             statement.setInt(5, musica.getCensura());
             statement.setInt(6, musica.getId());
