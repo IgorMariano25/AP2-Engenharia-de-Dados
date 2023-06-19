@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,12 +21,12 @@ public class MusicaDAO {
     public void criarMusica(Musica musica) {
         try {
             String sql = "INSERT INTO Musica (id, Título, Letra, Data_Lancamento, Duracao_segundos, Censura, fk_categoria) " +
-                           "VALUES (?, ?, ?, ?, ?, ?, ?)";
+                         "VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, musica.getId());
             statement.setString(2, musica.getTitulo());
             statement.setString(3, musica.getLetra());
-            statement.setDate(4, new java.sql.Date(musica.getDataLancamento().getTime()));
+            statement.setDate(4, Date.valueOf(musica.getDataLancamento()));
             statement.setInt(5, musica.getDuracaoSegundos());
             statement.setInt(6, musica.getCensura());
             statement.setString(7, musica.getCategoria().getNome());
@@ -37,7 +39,7 @@ public class MusicaDAO {
     public void atualizar(Musica musica) {
         try {
             String sql = "UPDATE Musica SET Título = ?, Letra = ?, Data_Lancamento = ?, " +
-                           "Duracao_segundos = ?, Censura = ?, Categoria = ?, WHERE id = ?";
+                    "Duracao_segundos = ?, Censura = ?, Categoria = ?, WHERE id = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, musica.getTitulo());
             statement.setString(2, musica.getLetra());
