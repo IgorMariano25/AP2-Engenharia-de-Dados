@@ -26,6 +26,9 @@ public class Playlist {
       this.categoria = categoria;
       this.musicas = new ArrayList<Musica>();
     }
+    public Playlist(String titulo) {
+      this.titulo = titulo;
+    }
 
     public int getId() {
       return id;
