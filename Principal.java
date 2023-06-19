@@ -38,9 +38,9 @@ public class Principal {
         autor_dao.retornarPeloId(3);
 
         //Criando Compositores
-        Compositor compositor2 = new Compositor("Igor Mariano");
-        Compositor compositor3 = new Compositor("Felipe Castelhano");
-        Compositor compositor4 = new Compositor("Guilherme Felix");
+        Compositor compositor1 = new Compositor("Igor Mariano");
+        Compositor compositor2 = new Compositor("Felipe Castelhano");
+        Compositor compositor3 = new Compositor("Guilherme Felix");
 
         Categoria categoria1 = new Categoria("Funk");
         Categoria categoria2 = new Categoria("Rap");
@@ -63,12 +63,12 @@ public class Principal {
 
         CompositorDAO compositor_dao = new CompositorDAO(connection);
       
+        compositor_dao.criarSemMusica(compositor1);
         compositor_dao.criarSemMusica(compositor2);
         compositor_dao.criarSemMusica(compositor3);
-        compositor_dao.criarSemMusica(compositor4);
 
+        compositor_dao.deleteCompositor(compositor1);
         compositor_dao.deleteCompositor(compositor2);
-        compositor_dao.deleteCompositor(compositor3);
 
         PlaylistDAO playlistDAO = new PlaylistDAO(connection);
         Playlist playlist1 = new Playlist(new Date(2022, 5, 3),"RapCaviar", true , categoria2);
