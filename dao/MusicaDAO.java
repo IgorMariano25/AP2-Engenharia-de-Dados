@@ -76,7 +76,7 @@ public class MusicaDAO {
                 musica.setId(resultSet.getInt("id"));
                 musica.setTitulo(resultSet.getString("Título"));
                 musica.setLetra(resultSet.getString("Letra"));
-                //musica.setDate(Date.valueOf(musica.getDataLancamento()));
+                musica.setDataLancamento(resultSet.getDate("Data_Lancamento"));
                 musica.setDuracaoSegundos(resultSet.getInt("Duracao_segundos"));
                 musica.setCensura(resultSet.getInt("Censura"));
                 return musica;
@@ -98,7 +98,7 @@ public class MusicaDAO {
                 musica.setId(resultSet.getInt("id"));
                 musica.setTitulo(resultSet.getString("Título"));
                 musica.setLetra(resultSet.getString("Letra"));
-                //musica.setDataLancamento(resultSet.getDate("Data_Lancamento"));
+                musica.setDataLancamento(resultSet.getDate("Data_Lancamento"));
                 musica.setDuracaoSegundos(resultSet.getInt("Duracao_segundos"));
                 musica.setCensura(resultSet.getInt("Censura"));
                 musicas.add(musica);

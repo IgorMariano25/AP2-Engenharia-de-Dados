@@ -1,6 +1,7 @@
 package modelo;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -122,5 +123,11 @@ public class Musica {
 
     public void setCategoria(Categoria categoria) {
       this.categoria = categoria;
+    }
+
+    public void setDataLancamento(Timestamp timestamp) {
+    }
+
+    public void setDataLancamento(Date date) {
     }
 }
