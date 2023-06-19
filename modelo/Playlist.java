@@ -2,7 +2,7 @@ package modelo;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.LocalDate;
+
 public class Playlist {
     private int id;
     private LocalDate dataCriacao;
