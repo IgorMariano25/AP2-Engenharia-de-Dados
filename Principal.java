@@ -81,7 +81,8 @@ public class Principal {
 
         playlistDAO.deletePlaylistComId(playlist3, 3);
         playlistDAO.deletePlaylistSemId(playlist2);
-        // playlistDAO.buscarPlaylistPeloTitulo(playlist3);
+
+         System.out.println(playlistDAO.buscarPlaylistPeloTitulo(playlist3).toString());
 
         System.out.println(autor_dao.lerAutor(autor3).toString());
         System.out.println(compositor_dao.lerCompositor(compositor3).toString());
