@@ -21,6 +21,6 @@ public class Compositor {
 
   @Override
   public String toString() {
-  return "Autor: " + nome;
+  return "Compositor: " + nome;
   }
 }
