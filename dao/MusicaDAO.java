@@ -20,8 +20,9 @@ public class MusicaDAO {
 
     public void criarMusica(Musica musica) {
         try {
-            String sql = "INSERT INTO Musica (id, Título, Letra, Data_Lancamento, Duracao_segundos, Censura, fk_categoria) " +
-                         "VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO Musica (id, Título, Letra, Data_Lancamento, Duracao_segundos, Censura, fk_categoria) "
+                    +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, musica.getId());
             statement.setString(2, musica.getTitulo());
@@ -39,7 +40,7 @@ public class MusicaDAO {
     public void atualizar(Musica musica) {
         try {
             String sql = "UPDATE Musica SET Título = ?, Letra = ?, Data_Lancamento = ?, " +
-                         "Duracao_segundos = ?, Censura = ?, Categoria = ?, WHERE id = ?";
+                    "Duracao_segundos = ?, Censura = ?, Categoria = ?, WHERE id = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, musica.getTitulo());
             statement.setString(2, musica.getLetra());
@@ -73,14 +74,13 @@ public class MusicaDAO {
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 Musica musica = new Musica(
-                    resultSet.getInt("id"),
-                    resultSet.getString("Título"),
-                    resultSet.getString("Letra"),
-                    resultSet.getDate("Data_Lancamento").toLocalDate(),
-                    resultSet.getInt("Duracao_segundos"),
-                    resultSet.getInt("Censura"),
-                    null
-                );
+                        resultSet.getInt("id"),
+                        resultSet.getString("Título"),
+                        resultSet.getString("Letra"),
+                        resultSet.getDate("Data_Lancamento").toLocalDate(),
+                        resultSet.getInt("Duracao_segundos"),
+                        resultSet.getInt("Censura"),
+                        null);
                 return musica;
             }
         } catch (SQLException e) {
@@ -88,8 +88,6 @@ public class MusicaDAO {
         }
         return null;
     }
-    
-
 
     public List<Musica> buscarTodos() {
         List<Musica> musicas = new ArrayList<>();
@@ -99,14 +97,13 @@ public class MusicaDAO {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Musica musica = new Musica(
-                    resultSet.getInt("id"),
-                    resultSet.getString("Título"),
-                    resultSet.getString("Letra"),
-                    resultSet.getDate("Data_Lancamento").toLocalDate(),
-                    resultSet.getInt("Duracao_segundos"),
-                    resultSet.getInt("Censura"),
-                    null
-                );
+                        resultSet.getInt("id"),
+                        resultSet.getString("Título"),
+                        resultSet.getString("Letra"),
+                        resultSet.getDate("Data_Lancamento").toLocalDate(),
+                        resultSet.getInt("Duracao_segundos"),
+                        resultSet.getInt("Censura"),
+                        null);
                 musicas.add(musica);
             }
         } catch (SQLException e) {
@@ -114,7 +111,6 @@ public class MusicaDAO {
         }
         return musicas;
     }
-    
 
     public Musica OuvirMusica(Musica musica) {
         try {
@@ -134,17 +130,16 @@ public class MusicaDAO {
 
     public Musica lerMusica(Musica musica) {
         try {
-            String query = "SELECT id, titulo, dataLancamento, duracaoSegundos, censura, categoria FROM Musica WHERE Título = ?";
+            String query = "SELECT Título, Data_lancamento, Duracao_segundos, Censura, fk_categoria FROM Musica WHERE Título = ?";
             try (PreparedStatement pstm = connection.prepareStatement(query)) {
                 pstm.setString(1, musica.getTitulo());
                 ResultSet resultSet = pstm.executeQuery();
                 if (resultSet.next()) {
-                    musica.setId(resultSet.getInt("id"));
-                    musica.setTitulo(resultSet.getString("titulo"));
-                    musica.setDataLancamento(resultSet.getDate("dataLancamento").toLocalDate());
-                    musica.setDuracaoSegundos(resultSet.getInt("duracaoSegundos"));
-                    musica.setCensura(resultSet.getInt("censura"));
-                    musica.setCategoria(resultSet.getString("categoria"));
+                    musica.setTitulo(resultSet.getString("Título"));
+                    musica.setDataLancamento(resultSet.getDate("Data_lancamento").toLocalDate());
+                    musica.setDuracaoSegundos(resultSet.getInt("Duracao_segundos"));
+                    musica.setCensura(resultSet.getInt("Censura"));
+                    musica.setCategoria(resultSet.getString("fk_categoria"));
                     return musica;
                 }
             }
@@ -153,6 +148,4 @@ public class MusicaDAO {
         }
         return null;
     }
-    
-    
 }

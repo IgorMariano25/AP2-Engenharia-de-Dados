@@ -127,8 +127,18 @@ public class Musica {
 
     public void setCategoria(String string) {
     }
+
   @Override
   public String toString() {
-    return "Letra: " + letra;
+      return "Título: " + titulo + "\n" +
+            "Letra: " + letra + "\n" +
+            "Data de Lançamento: " + dataLancamento + "\n" +
+            "Duração (segundos): " + duracaoSegundos + "\n" +
+            "Censura: " + censura + "\n" +
+            "Categoria: " + categoria;
   }
-}
+
+  public String toStringLetra(){
+      return "Letra: " + letra;
+  }
+} 

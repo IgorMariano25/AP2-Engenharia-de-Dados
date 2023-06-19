@@ -90,7 +90,9 @@ public class Principal {
 
         System.out.println(autor_dao.lerAutor(autor3).toString());
         System.out.println(compositor_dao.lerCompositor(compositor3).toString());
-        System.out.println(musicaDAO.OuvirMusica(musica1));
+        System.out.println(musicaDAO.OuvirMusica(musica1).toStringLetra());
+        System.out.println("\n\n");
+        System.out.println(musicaDAO.lerMusica(musica1));
     }
 }
 
