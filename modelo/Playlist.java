@@ -1,15 +1,16 @@
 package modelo;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.LocalDate;
 public class Playlist {
     private int id;
-    private Date dataCriacao;
+    private LocalDate dataCriacao;
     private String titulo;
     private boolean visibilidade;
     private Categoria categoria;
     private ArrayList<Musica> musicas;
-    public Playlist(int id, Date dataCriacao, String titulo, boolean visibilidade, Categoria categoria) {
+    public Playlist(int id, LocalDate dataCriacao, String titulo, boolean visibilidade, Categoria categoria) {
       this.id = id;
       this.dataCriacao = dataCriacao;
       this.titulo = titulo;
@@ -18,7 +19,7 @@ public class Playlist {
       this.musicas = new ArrayList<Musica>();
     }
 
-    public Playlist(Date dataCriacao, String titulo, boolean visibilidade, Categoria categoria) {
+    public Playlist(LocalDate dataCriacao, String titulo, boolean visibilidade, Categoria categoria) {
       this.dataCriacao = dataCriacao;
       this.titulo = titulo;
       this.visibilidade = visibilidade;
@@ -32,10 +33,10 @@ public class Playlist {
     public void setId(int id) {
       this.id = id;
     }
-    public Date getDataCriacao() {
+    public LocalDate getDataCriacao() {
       return dataCriacao;
     }
-    public void setDataCriacao(Date dataCriacao) {
+    public void setDataCriacao(LocalDate dataCriacao) {
       this.dataCriacao = dataCriacao;
     }
     public String getTitulo() {
