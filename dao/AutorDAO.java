@@ -91,24 +91,25 @@ public List<Musica> buscarTodosPorAutor(Autor autor) {
     List<Musica> musicas = new ArrayList<>();
     try {
         String sql = "SELECT * FROM Musica WHERE Autor = ?";
-        try (PreparedStatement pstm = connection.prepareStatement(sql)){
-        pstm.setString(1, autor.getNome());
-        ResultSet resultSet = pstm.executeQuery();
-        while (resultSet.next()) {
-            Musica musica = new Musica(0, sql, sql, null, 0, 0);
-            musica.setId(resultSet.getInt("id"));
-            musica.setTitulo(resultSet.getString("Título"));
-            musica.setLetra(resultSet.getString("Letra"));
-            //musica.setDataLancamento(resultSet.getDate("Data_Lancamento"));
-            musica.setDuracaoSegundos(resultSet.getInt("Duracao_segundos"));
-            musica.setCensura(resultSet.getInt("Censura"));
-            musicas.add(musica);
-        }
+        try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+            pstm.setString(1, autor.getNome());
+            ResultSet resultSet = pstm.executeQuery();
+            while (resultSet.next()) {
+                Musica musica = new Musica(0, sql, sql, null, 0, 0);
+                musica.setId(resultSet.getInt("id"));
+                musica.setTitulo(resultSet.getString("Título"));
+                musica.setLetra(resultSet.getString("Letra"));
+                musica.setDataLancamento(resultSet.getTimestamp("Data_Lancamento"));
+                musica.setDuracaoSegundos(resultSet.getInt("Duracao_segundos"));
+                musica.setCensura(resultSet.getInt("Censura"));
+                musicas.add(musica);
+            }
         }
     } catch (SQLException e) {
         e.printStackTrace();
     }
     return musicas;
 }
+
 
 }
