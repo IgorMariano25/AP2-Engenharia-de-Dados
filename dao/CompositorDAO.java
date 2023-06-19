@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import modelo.Autor;
 import modelo.Compositor;
 
 public class CompositorDAO {
@@ -62,5 +63,28 @@ public class CompositorDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public Compositor lerCompositor(Compositor compositor) {
+    try {
+        String sql = "SELECT * FROM compositor WHERE nome = ?";
+
+        try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+            pstm.setString(1, compositor.getNome());
+
+            try (ResultSet rs = pstm.executeQuery()) {
+                if (rs.next()) {
+                    String nomeCompositor = rs.getString("nome");
+                    Compositor lerCompositor = new Compositor(nomeCompositor);
+                    
+                    return lerCompositor;
+                }
+            }
+        }
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
+    return null;
+}
+
 }
 

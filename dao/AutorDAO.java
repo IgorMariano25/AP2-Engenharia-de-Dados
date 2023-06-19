@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modelo.Autor;
+import modelo.Usuario;
 
 public class AutorDAO {
 
@@ -63,4 +64,26 @@ public class AutorDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public Autor lerAutor(Autor autor) {
+    try {
+        String sql = "SELECT * FROM autor WHERE nome = ?";
+
+        try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+            pstm.setString(1, autor.getNome());
+
+            try (ResultSet rs = pstm.executeQuery()) {
+                if (rs.next()) {
+                    String nomeAutor = rs.getString("nome");
+                    Autor lerAutor = new Autor(nomeAutor);
+                    return lerAutor;
+                }
+            }
+        }
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
+    return null;
+}
+
 }
