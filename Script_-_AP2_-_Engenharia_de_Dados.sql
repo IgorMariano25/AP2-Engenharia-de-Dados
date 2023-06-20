@@ -27,7 +27,6 @@ CREATE TABLE IF NOT EXISTS `AP2`.`Autor` (
   `Nome` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`, `Nome`));
 
-
 -- -----------------------------------------------------
 -- Table `AP2`.`Compositor`
 -- -----------------------------------------------------
@@ -35,7 +34,6 @@ CREATE TABLE IF NOT EXISTS `AP2`.`Compositor` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `Nome` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`, `Nome`));
-
 
 -- -----------------------------------------------------
 -- Table `AP2`.`Categoria`
@@ -127,12 +125,12 @@ CREATE TABLE IF NOT EXISTS `AP2`.`autor_musica` (
   PRIMARY KEY (`fk_autor`, `fk_musica`),
   CONSTRAINT `fk_autor_musica`
     FOREIGN KEY (`fk_autor`)
-    REFERENCES `AP2`.`Autor` (`id`)
+    REFERENCES `AP2`.`autor` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_musica_autor`
     FOREIGN KEY (`fk_musica`)
-    REFERENCES `AP2`.`Musica` (`id`)
+    REFERENCES `AP2`.`musica` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
 
