@@ -35,18 +35,25 @@ public class AutorDAO {
     }
 
     public void criarComMusica(Autor autor, Musica musica) {
-        try {
-            String sql = "INSERT INTO autor_musica (fk_autor, fk_musica) VALUES (?, ?)";
-
-            try (PreparedStatement pstm = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-                pstm.setString(1, autor.getNome());
-                pstm.setInt(2, musica.getId());
-                pstm.execute();
-            }
+        String sql = "INSERT INTO autor_musica (fk_autor, fk_musica) VALUES (?, ?)";
+    
+        try (PreparedStatement pstm = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            pstm.setInt(1, autor.getId());
+            pstm.setInt(2, musica.getId());
+            pstm.execute();
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
     }
+    
       public Autor retornarPeloId(int id) {
         try {
             String sql = "SELECT * FROM autor WHERE id = ?";
