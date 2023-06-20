@@ -27,6 +27,6 @@ public class Categoria {
   }
 
     public String toStringNomeCategoria(){
-      return "Categoria: "nome;
+      return "Categoria: " + nome;
   }
 }
