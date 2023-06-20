@@ -132,7 +132,7 @@ public List<Musica> buscarMusicasDoAutor(Autor autor) {
     public List<Musica> buscarTodosPorAutor(Autor autor) {
         List<Musica> musicas = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM Musica WHERE Autor = ?";
+            String sql = "SELECT * FROM Musica WHERE autor = ?";
             try (PreparedStatement pstm = connection.prepareStatement(sql)) {
                 pstm.setString(1, autor.getNome());
                 ResultSet resultSet = pstm.executeQuery();
