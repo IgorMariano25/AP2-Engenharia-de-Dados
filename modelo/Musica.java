@@ -61,6 +61,10 @@ public class Musica {
       this.autores = new ArrayList<Autor>();
     }
 
+    public Musica(String titulo) {
+      this.titulo = titulo;
+    }
+
     public void addCompositor(Compositor compositor) {
       this.compositores.add(compositor);
     }

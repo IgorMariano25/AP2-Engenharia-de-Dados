@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -101,32 +102,56 @@ public class AutorDAO {
     return null;
 }
 
-public List<Musica> buscarTodosPorAutor(Autor autor) {
+public List<Musica> buscarMusicasDoAutor(Autor autor) {
     List<Musica> musicas = new ArrayList<>();
+
     try {
-        String sql = "SELECT * FROM Musica WHERE Autor = ?";
+        String sql = "SELECT id FROM Musica musica " +
+                     "INNER JOIN autor_musica autor_musica ON musica.id = autor_musica.Nome " +
+                     "WHERE autor_musica.Nome = ?";
+
         try (PreparedStatement pstm = connection.prepareStatement(sql)) {
             pstm.setString(1, autor.getNome());
-            ResultSet resultSet = pstm.executeQuery();
-            while (resultSet.next()) {
-                Musica musica = new Musica(
-                    resultSet.getInt("id"),
-                    resultSet.getString("Título"),
-                    resultSet.getString("Letra"),
-                    resultSet.getDate("Data_Lancamento").toLocalDate(),
-                    resultSet.getInt("Duracao_segundos"),
-                    resultSet.getInt("Censura"),
-                    null
-                );
-                musicas.add(musica);
+
+            try (ResultSet rs = pstm.executeQuery()) {
+                while (rs.next()) {
+                    String titulo = rs.getString("Título");
+
+                    Musica musica = new Musica(titulo);
+                    musicas.add(musica);
+                }
             }
         }
     } catch (SQLException e) {
-        e.printStackTrace();
+        throw new RuntimeException(e);
     }
     return musicas;
 }
 
 
-
+    public List<Musica> buscarTodosPorAutor(Autor autor) {
+        List<Musica> musicas = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM Musica WHERE Autor = ?";
+            try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+                pstm.setString(1, autor.getNome());
+                ResultSet resultSet = pstm.executeQuery();
+                while (resultSet.next()) {
+                    Musica musica = new Musica(
+                        resultSet.getInt("id"),
+                        resultSet.getString("Título"),
+                        resultSet.getString("Letra"),
+                        resultSet.getDate("Data_Lancamento").toLocalDate(),
+                        resultSet.getInt("Duracao_segundos"),
+                        resultSet.getInt("Censura"),
+                        null
+                    );
+                    musicas.add(musica);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return musicas;
+    }
 }
